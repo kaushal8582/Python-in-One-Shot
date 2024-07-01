@@ -12,9 +12,10 @@ cursor.execute('''
 
 
 def list_videos():
+  
  cursor.execute("SELECT * FROM videos")
  for row in cursor.fetchall():
-  print(row)
+  print(f"{row[0]}: {row[1]} - Video Duration is : {row[2]}")
 
 def add_video(name,time):
   cursor.execute("INSERT INTO videos (name ,time) VALUES (?, ?)",(name,time))
@@ -40,6 +41,8 @@ def main():
     choice = input("Enter your choice : ")
     
     if choice =="1":
+      print("\n\n\n")
+      print("*" * 70)
       list_videos()
     elif choice=="2":
       name =input("Enter the video name : ")
